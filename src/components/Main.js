@@ -6,12 +6,12 @@ class Main extends Component {
   }
   render() {
     return (
-      <div id="content" className="mt-3">
+      <div style={{ backgroundColor: "#D3D3D3" }} id="content" className="mt-5">
         <table className="table table-borderless text-muted text-center">
           <thead>
             <tr>
-              <th scope="col">Staking Balance</th>
-              <th scope="col">Reward Balance</th>
+              <th scope="col"> STAKING BALANCE</th>
+              <th scope="col">REWARD BALANCE</th>
             </tr>
           </thead>
           <tbody>
@@ -31,7 +31,7 @@ class Main extends Component {
           </tbody>
         </table>
         <div className="card mb-4">
-          <div className="card-body">
+          <div style={{ backgroundColor: "#FFFFE0" }} className="card-body">
             <form
               className="mb-3"
               onSubmit={(event) => {
@@ -44,7 +44,7 @@ class Main extends Component {
             >
               <div>
                 <label className="float-left">
-                  <b>Stake Tokens</b>
+                  <b>STAKE TOKENS</b>
                 </label>
                 <span className="float-right text-muted">
                   Balance:{" "}
@@ -73,15 +73,20 @@ class Main extends Component {
               </div>
               <button
                 type="submit"
-                className="btn btn-primary btn-block btn-lg"
+                style={{ backgroundColor: "#daa520" }}
+                className="btn btn-block btn-lg"
               >
                 STAKE!
               </button>
             </form>
-            <button type='submit' className="btn btn-link btn-block btn-sm" onClick={(event) => {
-              event.preventDefault()
-              this.props.unstakeTokens()
-            }}>
+            <button
+              type="submit"
+              className="btn btn-danger btn-block btn-sm"
+              onClick={(event) => {
+                event.preventDefault();
+                this.props.unstakeTokens();
+              }}
+            >
               UN-STAKE...
             </button>
           </div>

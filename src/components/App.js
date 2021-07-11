@@ -78,20 +78,29 @@ class App extends Component {
   }
 
   stakeTokens = (amount) => {
-    this.setState({loading: true})
-    this.state.daiToken.methods.approve(this.state.staking._address, amount).send({from: this.state.account}).on('transactionHash', (hash) => {
-      this.state.staking.methods.stakeTokens(amount).send({from: this.state.account}).on('transactionHash', (hash) => {
-        this.setState({loading:false})
-      })
-    })
-  }
+    this.setState({ loading: true });
+    this.state.daiToken.methods
+      .approve(this.state.staking._address, amount)
+      .send({ from: this.state.account })
+      .on("transactionHash", (hash) => {
+        this.state.staking.methods
+          .stakeTokens(amount)
+          .send({ from: this.state.account })
+          .on("transactionHash", (hash) => {
+            this.setState({ loading: false });
+          });
+      });
+  };
 
   unstakeTokens = (amount) => {
-    this.setState({loading: true})
-    this.state.staking.methods.unstakeTokens().send({from: this.state.account}).on('transactionHash', (hash) => {
-      this.setState({loading: false})
-    })
-  }
+    this.setState({ loading: true });
+    this.state.staking.methods
+      .unstakeTokens()
+      .send({ from: this.state.account })
+      .on("transactionHash", (hash) => {
+        this.setState({ loading: false });
+      });
+  };
 
   constructor(props) {
     super(props);
@@ -127,7 +136,7 @@ class App extends Component {
       );
     }
     return (
-      <div>
+      <div style={{ backgroundColor: "#a9a9a9" }}>
         <Navbar account={this.state.account} />
         <div className="container-fluid mt-5">
           <div className="row">
@@ -143,6 +152,19 @@ class App extends Component {
               </div>
             </main>
           </div>
+        </div>
+        <div
+          style={{
+            backgroundColor: "black",
+            color: "white",
+            padding: "20px",
+            height: "150px",
+            marginTop: "26px",
+            textAlign: "center",
+          }}
+        >
+          <p>Designed and Developed by</p>
+          <p>Shruti Jain</p>
         </div>
       </div>
     );
